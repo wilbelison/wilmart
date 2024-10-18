@@ -1,0 +1,147 @@
+<h2>Gerenciar Produtos</h2>
+
+<h3>Adicionar Novo Produto</h3>
+<form action="/admin/products" method="POST" class="admin-form">
+  <div class="form-group">
+    <label for="title">Título:</label>
+    <input
+      type="text"
+      id="title"
+      name="title"
+      placeholder="Digite o título"
+      required
+    />
+  </div>
+  <div class="form-group">
+    <label for="description">Descrição:</label>
+    <input
+      type="text"
+      id="description"
+      name="description"
+      placeholder="Digite a descrição"
+      required
+    />
+  </div>
+  <div class="form-group">
+    <label for="price">Preço:</label>
+    <input
+      type="number"
+      id="price"
+      name="price"
+      placeholder="Digite o preço"
+      step="0.01"
+      required
+    />
+  </div>
+  <div class="form-group">
+    <label for="thumbnail">URL da Imagem:</label>
+    <input
+      type="text"
+      id="thumbnail"
+      name="thumbnail"
+      placeholder="Digite a URL da imagem"
+      required
+    />
+  </div>
+  <div class="form-group">
+    <label for="code">Código:</label>
+    <input
+      type="text"
+      id="code"
+      name="code"
+      placeholder="Digite o código"
+      required
+    />
+  </div>
+  <div class="form-group">
+    <label for="stock">Estoque:</label>
+    <input
+      type="number"
+      id="stock"
+      name="stock"
+      placeholder="Digite a quantidade em estoque"
+      required
+    />
+  </div>
+  <button type="submit">Adicionar Produto</button>
+</form>
+
+<h3>Lista de Produtos</h3>
+<ul class="admin-product-list">
+  {{#each products}}
+    <li class="admin-product-item">
+      <form
+        action="/admin/products/{{this._id}}?_method=PUT"
+        method="POST"
+        class="admin-product-form"
+      >
+        <div class="form-group">
+          <label for="title-{{this._id}}">Título:</label>
+          <input
+            type="text"
+            id="title-{{this._id}}"
+            name="title"
+            value="{{this.title}}"
+            required
+          />
+        </div>
+        <div class="form-group">
+          <label for="description-{{this._id}}">Descrição:</label>
+          <input
+            type="text"
+            id="description-{{this._id}}"
+            name="description"
+            value="{{this.description}}"
+            required
+          />
+        </div>
+        <div class="form-group">
+          <label for="price-{{this._id}}">Preço:</label>
+          <input
+            type="number"
+            id="price-{{this._id}}"
+            name="price"
+            value="{{this.price}}"
+            step="0.01"
+            required
+          />
+        </div>
+        <div class="form-group">
+          <label for="thumbnail-{{this._id}}">URL da Imagem:</label>
+          <input
+            type="text"
+            id="thumbnail-{{this._id}}"
+            name="thumbnail"
+            value="{{this.thumbnail}}"
+            required
+          />
+        </div>
+        <div class="form-group">
+          <label for="code-{{this._id}}">Código:</label>
+          <input
+            type="text"
+            id="code-{{this._id}}"
+            name="code"
+            value="{{this.code}}"
+            required
+          />
+        </div>
+        <div class="form-group">
+          <label for="stock-{{this._id}}">Estoque:</label>
+          <input
+            type="number"
+            id="stock-{{this._id}}"
+            name="stock"
+            value="{{this.stock}}"
+            required
+          />
+        </div>
+        <button type="submit">Atualizar</button>
+      </form>
+
+      <form action="/admin/products/{{this._id}}?_method=DELETE" method="POST">
+        <button type="submit" class="delete-button">Deletar</button>
+      </form>
+    </li>
+  {{/each}}
+</ul>
