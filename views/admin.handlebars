@@ -76,6 +76,15 @@
         class="admin-product-form"
       >
         <div class="form-group">
+          <label for="id-{{this._id}}">ID:</label>
+          <input
+            type="text"
+            id="id-{{this._id}}"
+            name="id"
+            value="{{this._id}}"
+            disabled
+          />
+        </div>
           <label for="title-{{this._id}}">Título:</label>
           <input
             type="text"
