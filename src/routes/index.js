@@ -2,7 +2,7 @@ import express from "express";
 import * as productController from "../controllers/product.js";
 import * as authController from "../controllers/auth.js";
 import { isAuthenticated } from "../middlewares/auth.js";
-import User from "../models/users.js";
+import User from "../models/User.js";
 import bcrypt from "bcrypt";
 
 const router = express.Router();
