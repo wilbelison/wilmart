@@ -1,0 +1,46 @@
+<h1>Seu Carrinho</h1>
+
+{{#if items.length}}
+<table>
+    <thead>
+        <tr>
+            <th>Produto</th>
+            <th>Preço</th>
+            <th>Quantidade</th>
+            <th>Total</th>
+            <th>Ações</th>
+        </tr>
+    </thead>
+    <tbody>
+        {{#each items}}
+        <tr>
+            <td>{{this.title}}</td>
+            <td>R$ {{this.price}}</td>
+            <td>
+                <input type="number" class="cart-quantity" data-product-id="{{this._id}}" value="{{this.quantity}}" min="1">
+            </td>
+            <td>R$ {{multiply this.price this.quantity}}</td>
+            <td>
+                <form action="/cart/remove" method="POST">
+                    <input type="hidden" name="productId" value="{{this._id}}">
+                    <button type="submit">Remover</button>
+                </form>
+            </td>
+        </tr>
+        {{/each}}
+    </tbody>
+</table>
+
+<p>Total: R$ {{cartTotal}}</p>
+<button onclick="checkout()">Finalizar Compra</button>
+
+{{else}}
+<p>Seu carrinho está vazio.</p>
+{{/if}}
+
+<script>
+function checkout() {
+    // Implementar lógica de finalização de compra
+    console.log('Finalizando compra');
+}
+</script>
